@@ -112,6 +112,17 @@ ul {
   font-size: 0.98rem;
 }
 
+.brand-logo {
+  display: block;
+  width: 112px;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+
+.brand-logo-footer {
+  width: 190px;
+}
+
 .menu-toggle {
   display: grid;
   place-content: center;
@@ -297,6 +308,10 @@ ul {
   font-style: normal;
 }
 
+.hero h1 {
+  letter-spacing: -0.035em;
+}
+
 .hero-intro {
   max-width: 620px;
   margin: 26px 0 0;
@@ -473,6 +488,13 @@ ul {
   color: #5d5a56;
   background: rgba(255, 255, 255, 0.45);
   font-size: 0.78rem;
+}
+
+.about-tagline {
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-style: italic;
 }
 
 .pricing-section {
@@ -674,8 +696,43 @@ ul {
 }
 
 .gallery-feature {
+  grid-column: 1 / -1;
   grid-row: span 2;
   background: linear-gradient(145deg, #b8b0a6, #45423f);
+}
+
+.gallery-feature::before {
+  display: none;
+}
+
+.gallery-feature > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #e8e3dc;
+  transition: transform 0.35s ease;
+}
+
+.gallery-feature:hover > img {
+  transform: scale(1.015);
+}
+
+.gallery-video-label {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  margin-top: auto;
+  padding: 11px 12px;
+  border-radius: 10px;
+  color: var(--white);
+  background: rgba(17, 17, 17, 0.78);
+  backdrop-filter: blur(8px);
 }
 
 .tone-light {
@@ -1040,6 +1097,10 @@ ul {
 
   .site-header .header-book {
     display: inline-flex;
+  }
+
+  .brand-logo-header {
+    width: 132px;
   }
 
   .hero {
