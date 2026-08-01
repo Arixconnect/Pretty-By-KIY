@@ -297,11 +297,11 @@ ul {
 
 .hero {
   display: grid;
-  gap: 48px;
+  gap: 34px;
   max-width: var(--max);
-  min-height: calc(100svh - 72px);
+  min-height: 0;
   margin: auto;
-  padding: 52px var(--pad) 70px;
+  padding: 42px var(--pad) 64px;
   overflow: hidden;
 }
 
@@ -380,7 +380,7 @@ ul {
 
 .hero-art {
   position: relative;
-  min-height: 480px;
+  min-height: 330px;
 }
 
 .photo-placeholder {
@@ -416,31 +416,22 @@ ul {
   top: 0;
   bottom: auto;
   left: 50%;
-  width: min(calc(100% - 10px), 270px);
-  aspect-ratio: 9 / 16;
-  padding: 20px;
+  width: min(calc(100% - 26px), 290px);
+  height: 330px;
+  padding: 16px;
   transform: translateX(-50%);
 }
 
-.video-shell::before {
-  z-index: 2;
-  pointer-events: none;
-}
-
-.video-embed {
+.hero-feature-image {
   position: absolute;
-  inset: 0;
+  inset: 12px;
   z-index: 1;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.video-embed iframe {
   display: block;
-  width: 100%;
-  height: 100%;
-  border: 0;
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
+  border-radius: calc(var(--radius) - 8px);
+  background: #e5e1db;
+  object-fit: contain;
 }
 
 .video-glow {
@@ -689,6 +680,7 @@ ul {
 
 .portfolio-section > .section-label,
 .portfolio-section > .portfolio-head,
+.portfolio-section > .portfolio-video-card,
 .portfolio-section > .gallery,
 .portfolio-section > .portfolio-cta {
   max-width: calc(var(--max) - (var(--pad) * 2));
@@ -719,6 +711,59 @@ ul {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-auto-rows: 180px;
   gap: 8px;
+}
+
+.portfolio-video-card {
+  width: min(100%, 300px);
+  margin-bottom: 32px;
+  overflow: hidden;
+  border: 1px solid rgba(206, 210, 213, 0.5);
+  border-radius: var(--radius-small);
+  background: linear-gradient(145deg, #cfd2d4, #777b7e);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.portfolio-video-frame iframe {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.portfolio-video-caption {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: center;
+  min-height: 74px;
+  padding: 15px 18px;
+  color: #191919;
+  background: rgba(241, 242, 242, 0.94);
+}
+
+.portfolio-video-caption > span,
+.portfolio-video-caption strong,
+.portfolio-video-caption small {
+  display: block;
+  font-size: 0.61rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.portfolio-video-caption small {
+  margin-top: 4px;
+  color: #5e6163;
+  font-size: 0.55rem;
 }
 
 .gallery-item {
@@ -762,49 +807,6 @@ ul {
   z-index: 1;
   font-size: 0.56rem;
   letter-spacing: 0.11em;
-}
-
-.gallery-feature {
-  grid-column: 1 / -1;
-  grid-row: auto;
-  justify-self: center;
-  width: min(100%, 280px);
-  height: 310px;
-  background: linear-gradient(145deg, #b8b0a6, #45423f);
-}
-
-.gallery-feature::before {
-  display: none;
-}
-
-.gallery-feature > img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  background: #e8e3dc;
-  transition: transform 0.35s ease;
-}
-
-.gallery-feature:hover > img {
-  transform: scale(1.015);
-}
-
-.gallery-video-label {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  width: 100%;
-  margin-top: auto;
-  padding: 11px 12px;
-  border-radius: 10px;
-  color: var(--white);
-  background: rgba(17, 17, 17, 0.78);
-  backdrop-filter: blur(8px);
 }
 
 .tone-light {
@@ -1055,7 +1057,7 @@ ul {
   }
 
   .hero-art {
-    min-height: 580px;
+    min-height: 500px;
   }
 
   .photo-main {
@@ -1064,19 +1066,8 @@ ul {
     bottom: 0;
     left: 0;
     width: auto;
-    aspect-ratio: auto;
+    height: auto;
     transform: none;
-  }
-
-  .video-embed {
-    top: 0;
-    right: auto;
-    bottom: 0;
-    left: 50%;
-    width: auto;
-    height: 100%;
-    aspect-ratio: 9 / 16;
-    transform: translateX(-50%);
   }
 
   .about-visual,
@@ -1108,12 +1099,9 @@ ul {
     gap: 10px;
   }
 
-  .gallery-feature {
-    grid-column: span 2;
-    grid-row: span 2;
-    justify-self: stretch;
-    width: auto;
-    height: auto;
+  .portfolio-video-card {
+    width: min(100%, 330px);
+    margin-bottom: 42px;
   }
 
   .portfolio-cta {
@@ -1283,9 +1271,9 @@ ul {
     gap: 12px;
   }
 
-  .gallery-feature {
-    grid-column: span 2;
-    grid-row: span 2;
+  .portfolio-video-card {
+    width: min(100%, 360px);
+    margin-bottom: 52px;
   }
 
   .policy-section {
