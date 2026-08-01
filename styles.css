@@ -77,6 +77,32 @@ ul {
   transform: none;
 }
 
+.scroll-accent {
+  position: fixed;
+  top: 58%;
+  right: -34px;
+  z-index: 4;
+  width: 92px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(184, 187, 189, 0.56);
+  border-radius: 50%;
+  box-shadow: 0 0 0 18px rgba(184, 187, 189, 0.08);
+  opacity: 0.7;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.scroll-accent::after {
+  content: "";
+  position: absolute;
+  top: 18%;
+  left: 18%;
+  width: 12px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(184, 187, 189, 0.72);
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -354,7 +380,7 @@ ul {
 
 .hero-art {
   position: relative;
-  min-height: 430px;
+  min-height: 480px;
 }
 
 .photo-placeholder {
@@ -387,8 +413,13 @@ ul {
 
 .photo-main {
   position: absolute;
-  inset: 0 8% 0 0;
+  top: 0;
+  bottom: auto;
+  left: 50%;
+  width: min(calc(100% - 10px), 270px);
+  aspect-ratio: 9 / 16;
   padding: 20px;
+  transform: translateX(-50%);
 }
 
 .video-shell::before {
@@ -398,14 +429,11 @@ ul {
 
 .video-embed {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
+  inset: 0;
   z-index: 1;
+  width: 100%;
   height: 100%;
-  aspect-ratio: 9 / 16;
   overflow: hidden;
-  transform: translateX(-50%);
 }
 
 .video-embed iframe {
@@ -456,7 +484,7 @@ ul {
 .silver-ring {
   position: absolute;
   right: 0;
-  bottom: 11%;
+  top: 14%;
   width: 31%;
   aspect-ratio: 1;
   border: 1px solid rgba(17, 17, 17, 0.16);
@@ -1000,6 +1028,11 @@ ul {
     --section-space: 122px;
   }
 
+  .scroll-accent {
+    right: -42px;
+    width: 118px;
+  }
+
   .hero {
     gap: 60px;
     padding-top: 70px;
@@ -1026,7 +1059,24 @@ ul {
   }
 
   .photo-main {
+    top: 0;
     right: 10%;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    aspect-ratio: auto;
+    transform: none;
+  }
+
+  .video-embed {
+    top: 0;
+    right: auto;
+    bottom: 0;
+    left: 50%;
+    width: auto;
+    height: 100%;
+    aspect-ratio: 9 / 16;
+    transform: translateX(-50%);
   }
 
   .about-visual,
@@ -1098,6 +1148,12 @@ ul {
     grid-template-columns: auto 1fr auto;
     gap: 34px;
     min-height: 82px;
+  }
+
+  .scroll-accent {
+    right: -48px;
+    width: 138px;
+    opacity: 0.62;
   }
 
   .menu-toggle {
@@ -1290,5 +1346,11 @@ ul {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+}
+
+@media (max-width: 899px) {
+  .skip-link {
+    display: none;
   }
 }
